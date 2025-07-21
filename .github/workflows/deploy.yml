@@ -19,9 +19,10 @@ jobs:
 
     - name: Build and Push Docker Image
       run: |
-        docker build -t agentic-ai-frontend:${{ github.sha }} .
-        docker tag agentic-ai-frontend:${{ github.sha }} arya518/agentic-ai-frontend:latest
-        docker push your-docker-username/agentic-ai-frontend:latest
+        docker build -t arya518/agentic-ai-frontend:${{ github.sha }} .
+        docker tag arya518/agentic-ai-frontend:${{ github.sha }} arya518/agentic-ai-frontend:latest
+        docker push arya518/agentic-ai-frontend:${{ github.sha }}
+        docker push arya518/agentic-ai-frontend:latest
 
     - name: Deploy to Kubernetes
       uses: azure/k8s-deploy@v4
@@ -30,4 +31,4 @@ jobs:
         manifests: |
           deployment.yaml
         images: |
-          yourregistry/agentic-ai-frontend:latest
+          arya518/agentic-ai-frontend:latest
